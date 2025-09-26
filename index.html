@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>С Днем Рождения, Миша Луговой!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #cce7ff, #f0faff, #e6f4ea);
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      text-align: center;
+      overflow: hidden;
+      height: 100vh;
+      position: relative;
+    }
+
+    h1 {
+      margin-top: 40px;
+      font-size: 3.5em;
+      color: #ff4081;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.25);
+    }
+
+    p {
+      font-size: 1.3em;
+      color: #333;
+      margin: 15px auto;
+      width: 70%;
+      line-height: 1.6em;
+    }
+
+    /* Фотки */
+    .fly {
+      position: absolute;
+      bottom: -120px;
+      background-size: cover;
+      background-position: center;
+      animation: rise 10s linear forwards;
+      opacity: 0.9;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    @keyframes rise {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Гирлянда */
+    .garland {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+
+    .flag {
+      width: 40px;
+      height: 60px;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      background: pink;
+      animation: swing 2s ease-in-out infinite alternate;
+    }
+
+    .flag:nth-child(2n) { background: #ffd166; }
+    .flag:nth-child(3n) { background: #06d6a0; }
+    .flag:nth-child(4n) { background: #118ab2; }
+    .flag:nth-child(5n) { background: #ef476f; }
+
+    @keyframes swing {
+      0% { transform: rotate(-5deg); }
+      100% { transform: rotate(5deg); }
+    }
+
+    /* Подпись */
+    footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 1.2em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>С Днём Рождения, Миша Луговой! 🎉🎂</h1>
+  <p>Дорогой Миша! Сегодня твой день — и пусть он будет таким же ярким, как огни этого праздника.  
+  Пусть в жизни у тебя всегда будет повод для улыбки, новые достижения и люди, которые искренне радуются твоим успехам.</p>
+  <p>Желаю здоровья, счастья, верных друзей рядом и уверенности в себе.  
+  Пусть каждый новый день приносит что-то хорошее, а мечты превращаются в цели и сбываются быстрее, чем ты успеваешь загадать!</p>
+  <p>Пусть твой путь будет светлым, насыщенным и добрым, а впереди ждёт ещё больше побед и радостных событий.  
+  С Днём Рождения, брат! 🥳🎁🎂</p>
+
+  <!-- Гирлянда -->
+  <div class="garland">
+    <div class="flag"></div>
+    <div class="flag"></div>
+    <div class="flag"></div>
+    <div class="flag"></div>
+    <div class="flag"></div>
+    <div class="flag"></div>
+    <div class="flag"></div>
+  </div>
+
+  <!-- Подпись -->
+  <footer>
+    С любовью и теплом 💖 Твои друзья
+  </footer>
+
+  <script>
+    const images = [
+      "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg",
+      "7.png", "8.webp",
+      "9.jpg", "10.jpg", "11.jpg", "12.jpg"
+    ];
+
+    function createFlyingImage() {
+      const img = document.createElement("div");
+      img.classList.add("fly");
+
+      // Случайная картинка
+      img.style.backgroundImage = `url(${images[Math.floor(Math.random() * images.length)]})`;
+
+      // Случайная позиция по ширине
+      img.style.left = Math.random() * window.innerWidth + "px";
+
+      // Случайный размер
+      const sizes = [50, 80, 120]; // маленький, средний, большой
+      const size = sizes[Math.floor(Math.random() * sizes.length)];
+      img.style.width = size + "px";
+      img.style.height = size + "px";
+
+      // Случайная скорость
+      img.style.animationDuration = (6 + Math.random() * 6) + "s";
+
+      document.body.appendChild(img);
+
+      setTimeout(() => {
+        img.remove();
+      }, 12000);
+    }
+
+    setInterval(createFlyingImage, 700);
+  </script>
+</body>
+</html>
